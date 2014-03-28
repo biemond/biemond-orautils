@@ -1,6 +1,6 @@
 #
 #
-class orautils::params()
+class orautils::params
 {
 
   $osOracleHome = $::hostname ? {
@@ -83,5 +83,4 @@ class orautils::params()
   $wlsAdminServer = $::hostname ?  {
                                     default    => "AdminServer",
                                 }
-
 }
