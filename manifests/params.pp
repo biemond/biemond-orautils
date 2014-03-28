@@ -1,6 +1,6 @@
 #
 #
-class orautils::params
+class orautils::params()
 {
 
   $osOracleHome = $::hostname ? {
