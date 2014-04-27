@@ -1,7 +1,9 @@
 #
 #
 #
-class orautils::params()
+class orautils::params(
+  $version         = "1111",
+)
 {
 
   $osOracleHome = $::hostname ? {

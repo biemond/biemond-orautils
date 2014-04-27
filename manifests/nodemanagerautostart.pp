@@ -48,9 +48,11 @@ define orautils::nodemanagerautostart
     'CentOS', 'RedHat', 'OracleLinux', 'Ubuntu', 'Debian', 'SLES': {
 
       $execPath        = '/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:'
-      Exec { path      => $execPath,
-             logoutput => true,
-           }
+
+      Exec { 
+        path      => $execPath,
+        logoutput => true,
+      }
     }
     default: {
       fail("Unrecognized operating system")
