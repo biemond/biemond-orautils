@@ -32,7 +32,7 @@ if test -f /lib/lsb/init-functions; then
     . /lib/lsb/init-functions
 fi
 
-<% if osfamily == "Suse" %>
+<% if @osfamily == "Suse" %>
 . /etc/rc.status
 <% else %>
 . /etc/init.d/functions
