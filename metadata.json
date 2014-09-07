@@ -1,6 +1,6 @@
 {
   "name": "biemond-orautils",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "summary": "Oracle WebLogic utilities scripts",
   "author": "Edwin Biemond",
   "dependencies": [],
