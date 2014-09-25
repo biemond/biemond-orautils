@@ -1,6 +1,7 @@
 # Changes
 
-## 0.3.1 
+## 0.3.1
+- nodemanagerautostart support for a not default domain folder location
 
 ## 0.3.0 
 - Cleanup
