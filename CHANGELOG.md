@@ -1,6 +1,7 @@
 # Changes
 
 ## 0.3.3
+- all scripts also works for solaris release 11.1
 
 ## 0.3.2
 - fix for windows/unix linefeed when oradb is used in combination with vagrant on a windows host
