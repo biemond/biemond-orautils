@@ -30,7 +30,7 @@ then
 else
   echo "The NodeManager is not running yet.. Starting NodeManager now...."
   sleep 3
-  <%= @nodeMgrPathParam %>/startNodeManager.sh &
+  <%= @node_mgr_path %>/startNodeManager.sh &
   sleep 5
   pid=`${checkStmt} | /bin/grep -i nodemanager.javahome | /bin/grep -v grep | awk '{print $1}'`
   if [ ${pid} ]
