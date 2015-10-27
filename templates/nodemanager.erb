@@ -1,3 +1,4 @@
+<% @version = @version.to_i # in some situations the version comes through as a string. This fixes that. Not quite sure what causes this. -%>
 #!/bin/sh
 #
 ### BEGIN INIT INFO
@@ -58,9 +59,9 @@ is_nodemgr_running() {
     local nodemgr_cnt=`ps -ef        | \
         grep -i 'java '                  | \
         grep -i ' weblogic.NodeManager '  | \
-<% if @version == 1212 or @version == 1213 %>
+<% if @version == 1212 or @version == 1213 -%>
         grep -i 'Dweblogic.RootDirectory=<%= @domain_path -%>' | \
-<% end %>
+<% end -%>
         grep -v grep                  | \
         wc -l`
     echo $nodemgr_cnt
@@ -72,9 +73,9 @@ get_nodemgr_pid() {
         nodemgr_pid=`ps -ef             | \
             grep -i 'java '                 | \
             grep -i ' weblogic.NodeManager ' | \
-<% if @version == 1212 or @version == 1213 %>
+<% if @version == 1212 or @version == 1213 -%>
             grep -i 'Dweblogic.RootDirectory=<%= @domain_path -%>' | \
-<% end %>
+<% end -%>
             grep -v grep                 | \
             tr -s ' '                    | \
             cut -d' ' -f2`
