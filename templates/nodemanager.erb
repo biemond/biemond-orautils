@@ -1,23 +1,13 @@
 <% @version = @version.to_i # in some situations the version comes through as a string. This fixes that. Not quite sure what causes this. -%>
 #!/bin/sh
 #
-### BEGIN INIT INFO
-# Provides:        nodemanager
-# Required-Start:
-# Required-Stop:
-# Default-Start:    2 3 4 5
-# Default-Stop:        0 1 6
-# Short-Description:    WebLogic Nodemanager
-### END INIT INFO
-
 # nodemgr Oracle Weblogic NodeManager service
 #
 # chkconfig:   345 99 15
 # description: Oracle Weblogic NodeManager service
 #
-
 ### BEGIN INIT INFO
-# Provides: nodemgr
+# Provides: nodemgr nodemanager
 # Required-Start: $network $local_fs
 # Required-Stop:
 # Should-Start:
@@ -27,6 +17,7 @@
 # Short-Description: Oracle Weblogic NodeManager service.
 # Description: Starts and stops Oracle Weblogic NodeManager.
 ### END INIT INFO
+
 
 # Source function library.
 if test -f /lib/lsb/init-functions; then
