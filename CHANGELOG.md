@@ -2,6 +2,7 @@
 
 ## 0.5.1
 - 12c nodemanager service support for multiple nodemanagers
+- fix double BEGIN INIT INFO in nodemanager service
 
 ## 0.5.0
 - rename all params for puppet 4.
