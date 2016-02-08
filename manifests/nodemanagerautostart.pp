@@ -41,7 +41,7 @@ define orautils::nodemanagerautostart(
     default: {
       $nodeMgrPath    = "${wl_home}/common/nodemanager"
       $nodeMgrBinPath = "${wl_home}/server/bin"
-      $scriptName     = "nodemanager"
+      $scriptName     = 'nodemanager'
 
       if $log_dir == undef {
         $nodeMgrLckFile = "${nodeMgrPath}/nodemanager.log.lck"
