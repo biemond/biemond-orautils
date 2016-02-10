@@ -109,7 +109,17 @@ define orautils::nodemanagerautostart(
         }
       }
     }
-    'Ubuntu', 'Debian', 'SLES':{
+    'SLES':{
+        exec { "chkconfig ${scriptName}":
+          command   => "chkconfig --add ${scriptName}",
+          require   => File[$location],
+          user      => 'root',
+          unless    => "chkconfig | /bin/grep '${scriptName}'",
+          path      => $execPath,
+          logoutput => true,
+        }
+    }
+    'Ubuntu', 'Debian':{
       exec { "update-rc.d ${scriptName}":
         command   => "update-rc.d ${scriptName} defaults",
         require   => File[$location],
