@@ -97,7 +97,7 @@ start() {
     [ -x $exec ] || exit 5
     echo -n $"Starting $prog: "
     sleep 10
-    su $user -c "export JAVA_OPTIONS='${JSEE_OPTIONS} ${TRUST_OPTIONS}';$exec &"
+    su - $user -c "export JAVA_OPTIONS='${JSEE_OPTIONS} ${TRUST_OPTIONS}';$exec &"
     retval=$?
     echo
     return $retval
