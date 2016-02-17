@@ -7,7 +7,11 @@
 # description: Oracle Weblogic NodeManager service
 #
 ### BEGIN INIT INFO
+<% if @version == 1036 or @version == 1211 -%>
 # Provides: nodemgr nodemanager
+<% else %>
+# Provides: nodemgr_<%= @domain %> nodemanager_<%= @domain %>
+<% end %>
 # Required-Start: $network $local_fs $remote_fs
 # Required-Stop:
 # Should-Start:
