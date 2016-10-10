@@ -5,15 +5,16 @@ require 'puppet-syntax/tasks/puppet-syntax'
 require 'pathname'
 require 'puppet_blacksmith/rake_tasks'
 
-
 desc "Run the tests"
 RSpec::Core::RakeTask.new(:test) do |t|
   t.rspec_opts = ['--color', '-f d']
   t.pattern = 'spec/*/*_spec.rb'
 end
 
-
+PuppetLint.configuration.send("disable_140chars")
 PuppetLint.configuration.send("disable_80chars")
+PuppetLint.configuration.send('disable_variable_is_lowercase')
+PuppetLint.configuration.send("disable_case_without_default")
 # PuppetLint.configuration.send("disable_right_to_left_relationship")
 # PuppetLint.configuration.send("disable_autoloader_layout")
 # PuppetLint.configuration.send("disable_names_containing_dash")
@@ -25,7 +26,6 @@ PuppetLint.configuration.send("disable_80chars")
 # PuppetLint.configuration.send("disable_slash_comments")
 # PuppetLint.configuration.send("disable_star_comments")
 # PuppetLint.configuration.send("disable_selector_inside_resource")
-PuppetLint.configuration.send("disable_case_without_default")
 # PuppetLint.configuration.send("disable_documentation")
 # PuppetLint.configuration.send("disable_double_quoted_strings")
 # PuppetLint.configuration.send("disable_only_variable_string")
