@@ -14,7 +14,7 @@ before_install:
 script:
   - bundle exec rake syntax
   - bundle exec rake lint
-  - bundle exec rake spec
+  - bundle exec rake ci:setup:rspec spec
 notifications:
   email:
     - biemond@gmail.com
