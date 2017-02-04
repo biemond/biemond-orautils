@@ -3,7 +3,9 @@ require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'pathname'
+require 'ci/reporter/rake/rspec'
 require 'puppet_blacksmith/rake_tasks'
+
 
 desc "Run the tests"
 RSpec::Core::RakeTask.new(:test) do |t|
@@ -56,9 +58,19 @@ PuppetSyntax.exclude_paths = exclude_paths
 
 desc "Run syntax, lint, and spec tests."
 task :default => [
-    :spec_prep,
-    :syntax,
-    :test,
-    :lint,
-    :spec_clean
+  :spec_prep,
+  :syntax,
+  :spec_standalone,
+  :lint,
+  :spec_clean
 ]
+
+begin
+  require 'rubocop/rake_task'
+  desc 'Run RuboCop on the lib directory'
+  Rubocop::RakeTask.new(:rubocop) do |task|
+    task.patterns = ['lib/**/*.rb']
+    task.fail_on_error = true
+  end
+rescue LoadError, NameError
+end
