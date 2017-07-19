@@ -3,6 +3,11 @@
 # This script can be used to stop the WebLogic NodeManager
 #
 
+if [ $(id -run) != "<%= @ora_user %>" ]; then
+   echo "Must be <%= @ora_user %> to execute"
+   exit 1
+fi
+
 echo "Stopping Nodemanager..."
 
 unamestr=`uname`

@@ -1,5 +1,11 @@
 #!<%= @shell %>
 # *************************************************************************
+
+if [ $(id -run) != "<%= @ora_user %>" ]; then
+   echo "Must be <%= @ora_user %> to execute"
+   exit 1
+fi
+
 osWlHome=<%= @os_wl_home %>
 osDomain=<%= @os_domain %>
 osDomainPath=<%= @os_domain_path %>
