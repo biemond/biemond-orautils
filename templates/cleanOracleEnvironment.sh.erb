@@ -2,6 +2,20 @@
 # *************************************************************************
 # This script can be used to clean the oracle environment
 #
+
+
+if [ $(id -u) != 0 ]; then
+   echo "Must be root to execute"
+   exit 1
+fi
+
+read -p "Are you sure you want to erase everything? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
 osOracleHome=<%= @os_oracle_home %>
 osDownloadFolder=<%= @os_download_folder %>
 osMdwHome=<%= @os_mdw_home %>
@@ -41,6 +55,18 @@ else
     echo "Step 1 Remove domain pack files, ${osDownloadFolder}/domain_*.*"
     rm -rf $osDownloadFolder/domain_*.*
     echo "Step 2 Remove mdwhome, $osOracleHome"
+    if [[ "$unamestr" != 'SunOS' ]]; then
+      for mountpoint in `df --output=target|grep -e"$osOracleHome"`;
+      do
+        echo "       umount $mountpoint"
+        umount $mountpoint
+        if [ $? -ne 0 ]
+        then
+          echo "Unable to unmount $mountpoint"
+          exit 1
+         fi
+      done
+    fi
     rm -rf $osOracleHome
     echo "Step 3 Remove beahome list of user $oraUser"
     rm -rf "${userHome}/${oraUser}/bea"

@@ -1,6 +1,11 @@
 #!<%= @shell %>
 # *************************************************************************
 
+if [ $(id -run) != "<%= @ora_user %>" ]; then
+   echo "Must be <%= @ora_user %> to execute"
+   exit 1
+fi
+
 echo "Starting the Weblogic NodeManager...."
 echo "Checking if the Weblogic NodeManager is already started...."
 
